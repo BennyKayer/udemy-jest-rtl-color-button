@@ -15,3 +15,16 @@ test("change colour button", () => {
     expect(button).toHaveStyle({ backgroundColor: "blue" });
     expect(button).toHaveTextContent("Change to red");
 });
+
+test("checkbox", () => {
+    render(<App />);
+    const button = screen.getByRole("button", { name: "Change to blue" });
+    expect(button).toBeEnabled();
+
+    const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
+    expect(checkbox).not.toBeChecked();
+
+    fireEvent.click(checkbox);
+    expect(checkbox).toBeChecked();
+    expect(button).toBeDisabled();
+});
