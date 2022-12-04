@@ -19,7 +19,9 @@ const App = () => {
         <div>
             <button
                 style={{
-                    backgroundColor: isRed
+                    backgroundColor: isChecked
+                        ? "gray"
+                        : isRed
                         ? RED_BUTTON.colour
                         : BLUE_BUTTON.colour,
                 }}
