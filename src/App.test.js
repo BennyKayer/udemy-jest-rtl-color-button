@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import App, { replaceCamelWithSpaces } from "./App";
+import App, { replaceCamelWithSpaces, RED_BUTTON, BLUE_BUTTON } from "./App";
 import { logRoles } from "@testing-library/dom";
 
 test("change colour button", () => {
@@ -7,19 +7,19 @@ test("change colour button", () => {
     logRoles(container);
 
     // Initial
-    const button = screen.getByRole("button", { name: "Change to blue" });
-    expect(button).toHaveStyle({ backgroundColor: "red" });
+    const button = screen.getByRole("button", { name: RED_BUTTON.text });
+    expect(button).toHaveStyle({ backgroundColor: RED_BUTTON.colour });
 
     // Click
     fireEvent.click(button);
-    expect(button).toHaveStyle({ backgroundColor: "blue" });
-    expect(button).toHaveTextContent("Change to red");
+    expect(button).toHaveStyle({ backgroundColor: BLUE_BUTTON.colour });
+    expect(button).toHaveTextContent(BLUE_BUTTON.text);
 });
 
 test("Button is initially enabled, checkbox disables it", () => {
     render(<App />);
     // Button initially enabled
-    const button = screen.getByRole("button", { name: "Change to blue" });
+    const button = screen.getByRole("button", { name: RED_BUTTON.text });
     expect(button).toBeEnabled();
 
     // Checkbox initially unchecked
@@ -34,7 +34,7 @@ test("Button is initially enabled, checkbox disables it", () => {
 
     // Re-enabling button
     fireEvent.click(checkbox);
-    expect(button).toHaveStyle({ backgroundColor: "red" });
+    expect(button).toHaveStyle({ backgroundColor: RED_BUTTON.colour });
     expect(button).toBeEnabled();
 });
 

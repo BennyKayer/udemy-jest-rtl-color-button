@@ -1,14 +1,14 @@
 import "./App.css";
 import { useState } from "react";
 
-const RED_BUTTON = {
-    colour: "red",
-    text: "Change to blue",
+export const RED_BUTTON = {
+    colour: "mediumVioletRed",
+    text: "Change to midnight blue",
 };
 
-const BLUE_BUTTON = {
-    colour: "blue",
-    text: "Change to red",
+export const BLUE_BUTTON = {
+    colour: "midnightBlue",
+    text: "Change to medium violet red",
 };
 
 export const replaceCamelWithSpaces = (color) => {
