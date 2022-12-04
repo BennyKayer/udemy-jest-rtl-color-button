@@ -11,6 +11,10 @@ const BLUE_BUTTON = {
     text: "Change to red",
 };
 
+export const replaceCamelWithSpaces = (color) => {
+    return color.replace(/\B([A-Z])\B/g, " $1");
+};
+
 const App = () => {
     const [isRed, setIsRed] = useState(true);
     const [isChecked, setIsChecked] = useState(false);

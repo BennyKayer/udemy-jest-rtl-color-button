@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
+import App, { replaceCamelWithSpaces } from "./App";
 import { logRoles } from "@testing-library/dom";
 
 test("change colour button", () => {
@@ -36,4 +36,21 @@ test("Button is initially enabled, checkbox disables it", () => {
     fireEvent.click(checkbox);
     expect(button).toHaveStyle({ backgroundColor: "red" });
     expect(button).toBeEnabled();
+});
+
+describe("spaces before camel-case letters", () => {
+    test("works for no inner capital letters", () => {
+        const res = replaceCamelWithSpaces("red");
+        expect(res).toBe("red");
+    });
+
+    test("works for one inner capital letter", () => {
+        const res = replaceCamelWithSpaces("MidnightBlue");
+        expect(res).toBe("Midnight Blue");
+    });
+
+    test("works for multiple capital letters", () => {
+        const res = replaceCamelWithSpaces("MediumVioletRed");
+        expect(res).toBe("Medium Violet Red");
+    });
 });
